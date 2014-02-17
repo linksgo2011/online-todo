@@ -1,0 +1,16 @@
+#header{margin-top:10px;}
+#header .brand{color:#666;}
+#header .brand:hover{color:#999;text-decoration:none;};
+.table tr.active{
+	background:#ccc;
+}
+label{
+	display: inline-block;
+	width:100px;
+}
+fieldset{border:1px solid #ccc;padding:20px;}
+.search-form select{width:auto;}
+.search-form label{margin:0 10px;width:auto;}
+#CommentDetail{width:90%;}
+.hidden{display:none;}
+.error-message{color:#f60;padding:5px;}
