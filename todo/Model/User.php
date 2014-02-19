@@ -1,8 +1,7 @@
 <?php 
 class User extends AppModel {
 
-    public $useTable = 'user';
-    public $primaryKey = 'usr_id';
+    public $useTable = 'users';
 
     public $validate = array(
         'email' => array(
