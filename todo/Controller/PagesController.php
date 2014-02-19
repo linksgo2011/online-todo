@@ -29,12 +29,13 @@
  */
 class PagesController extends AppController {
 
+	public $prefix_layout = true;
 /**
  * This controller does not use a model
  *
  * @var array
  */
-	public $uses = array();
+	public $uses = array('User');
 
 /**
  * Displays a view
@@ -64,4 +65,13 @@ class PagesController extends AppController {
 		$this->render(implode('/', $path));
 	}
 
+	public function admin_index()
+	{
+		$this->layout = "admin";
+		$this->User->recursive = 0;
+        $this->paginate = array(
+            'order'=>'User.id desc'
+        );
+		$this->set('data', $this->paginate("User"));
+	}
 }
