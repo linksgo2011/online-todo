@@ -23,26 +23,27 @@ KindEditor.plugin('media', function(K) {
 				'<div class="ke-dialog-row">',
 				'<label for="keUrl" style="width:60px;">' + lang.url + '</label>',
 				'<input class="ke-input-text" type="text" id="keUrl" name="url" value="" style="width:160px;" /> &nbsp;',
-				'<input type="button" class="ke-upload-button" value="' + lang.upload + '" /> &nbsp;',
+				'<div style="display:none;"><input  type="button" class="ke-upload-button" value="' + lang.upload + '" /> &nbsp;',
 				'<span class="ke-button-common ke-button-outer">',
 				'<input type="button" class="ke-button-common ke-button" name="viewServer" value="' + lang.viewServer + '" />',
-				'</span>',
+				'</span></div>',
+				'<span>只能目前支持优酷</span>',
 				'</div>',
 				//width
 				'<div class="ke-dialog-row">',
 				'<label for="keWidth" style="width:60px;">' + lang.width + '</label>',
-				'<input type="text" id="keWidth" class="ke-input-text ke-input-number" name="width" value="550" maxlength="4" />',
+				'<input type="text" id="keWidth" class="ke-input-text ke-input-number" name="width" value="510" maxlength="4" />',
 				'</div>',
 				//height
 				'<div class="ke-dialog-row">',
 				'<label for="keHeight" style="width:60px;">' + lang.height + '</label>',
-				'<input type="text" id="keHeight" class="ke-input-text ke-input-number" name="height" value="400" maxlength="4" />',
+				'<input type="text" id="keHeight" class="ke-input-text ke-input-number" name="height" value="498" maxlength="4" />',
 				'</div>',
 				//autostart
-				'<div class="ke-dialog-row">',
-				'<label for="keAutostart">' + lang.autostart + '</label>',
-				'<input type="checkbox" id="keAutostart" name="autostart" value="" /> ',
-				'</div>',
+//				'<div class="ke-dialog-row">',
+//				'<label for="keAutostart">' + lang.autostart + '</label>',
+//				'<input type="checkbox" id="keAutostart" name="autostart" value="" /> ',
+//				'</div>',
 				'</div>'
 			].join('');
 			var dialog = self.createDialog({
@@ -57,29 +58,20 @@ KindEditor.plugin('media', function(K) {
 						var url = K.trim(urlBox.val()),
 							width = widthBox.val(),
 							height = heightBox.val();
-						if (url == 'http://' || K.invalidUrl(url)) {
-							alert(self.lang('invalidUrl'));
-							urlBox[0].focus();
-							return;
+						//组装iframe
+						var reg = /sid\/(.*)\/v\.swf/;
+						var key = url.match(reg,'$1');
+						var html;
+						if(!key){
+							reg = /id_(.*)\.html/;
+							key = url.match(reg,'$1');
 						}
-						if (!/^\d*$/.test(width)) {
-							alert(self.lang('invalidWidth'));
-							widthBox[0].focus();
-							return;
+
+						if(!key){
+							html = url; 
+						}else{
+							html = '<iframe height='+height+' width='+width+' src="http://player.youku.com/embed/'+key[1]+'" frameborder=0 allowfullscreen></iframe>'
 						}
-						if (!/^\d*$/.test(height)) {
-							alert(self.lang('invalidHeight'));
-							heightBox[0].focus();
-							return;
-						}
-						var html = K.mediaImg(self.themesPath + 'common/blank.gif', {
-								src : url,
-								type : K.mediaType(url),
-								width : width,
-								height : height,
-								autostart : autostartBox[0].checked ? 'true' : 'false',
-								loop : 'true'
-							});
 						self.insertHtml(html).hideDialog().focus();
 					}
 				}

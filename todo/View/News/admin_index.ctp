@@ -1,16 +1,15 @@
 <div class="block span12">
-    <div class="block-heading" data-toggle="collapse" data-target="#tablewidget">网站新闻</div>
+    <div class="block-heading" data-toggle="collapse" data-target="#tablewidget">网站公告</div>
     <div class="block-body collapse in">
         <p></p>
         <p>
-            <a href="/admin/News/add/" class="btn btn-warning pull-right">添加网站新闻</a>
+            <a href="/admin/News/add/" class="btn btn-warning pull-right">添加网站公告</a>
         </p>
         <div class="inline-form row-fluid">
             <?php $this->BForm->formatInput = "%s %s"; ?>
             <?php echo $this->Form->Create('News',array('type'=>'get','class'=>'form-inline')); ?>
             <?php echo $this->BForm->input("title",array('label'=>'标题','required'=>false)); ?>
             <?php echo $this->BForm->input("active",array('label'=>'状态','options'=>$active_arr,'empty'=>'选择状态','required'=>false,'style'=>'width:100px;')); ?>
-            <?php echo $this->BForm->input("keywords",array('label'=>'关键词','required'=>false)); ?>
             <?php echo $this->BForm->submit("搜索",array('class'=>'btn')); ?>
             <?php echo $this->Form->end(); ?>
         </div>

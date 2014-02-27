@@ -4,7 +4,7 @@
         <div class="widget">
             <div class="widget-header">
                 <i class="icon-user"></i>
-                <h3>查看新闻</h3>
+                <h3>查看公告</h3>
             </div> <!-- /widget-header -->
             <div class="widget-content">
                 <table class="table" >

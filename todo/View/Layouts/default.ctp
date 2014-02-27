@@ -3,7 +3,7 @@
 	<head>
 		<?php echo $this->Html->charset(); ?>
 		<title>
-		<?php echo $title_for_layout; ?>
+		程序员接单网
 		</title>
 		<?php echo $this->Html->css('bootstrap.min'); ?>
 		<?php echo $this->Html->css('main'); ?>
@@ -15,16 +15,24 @@
 		#content{min-height:500px;}
 		.tip{font-size:12px;color:#666;}
 		.red{color:#a00;}
+		.sub{font-size:14px;}
+		img{max-width:100%;}
 	</style>
 	<body>
 		<div class="container">
 		    <div class="masthead">
 		        <ul class="nav nav-pills pull-right">
+
+		            <li><a href="/">首页</a></li>
 		            <li><a href="/Tasks/index">个人中心</a></li>
+		            <?php if ($user['email']): ?>
 		            <li><a href="/Tasks/index"><?php echo $user['email']; ?></a></li>
+		            <?php endif ?>
 		            <li><a href="/users/logout">退出</a></a></li>
 		        </ul>
-		        <h3 class="muted"><a href="/">接单系统</a></h3>
+		        <h3 class="muted"><a href="/">程序员接单网</a>
+					<span class="sub">首页</span>
+		        </h3>
 		    </div>
 		    <hr>
 			<div id="content">
@@ -37,4 +45,4 @@
 		    </div>
 		</div>
 	</body>
-</html>
+</html>	

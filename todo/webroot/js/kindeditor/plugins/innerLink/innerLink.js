@@ -3,9 +3,6 @@ KindEditor.plugin('innerLink', function(K) {
     self.plugin.innerLink = {
         select_options:null,
         requestOptions : function(){
-            if (document.location.pathname.indexOf('MediaPages/edit/') < 1 || self.select_options!=null) {
-                return;
-            }
             var xmlhttp;
             if (window.XMLHttpRequest) {
                 xmlhttp=new XMLHttpRequest();
@@ -22,7 +19,7 @@ KindEditor.plugin('innerLink', function(K) {
                     }
                 }
             }
-            xmlhttp.open("GET", "/MediaPages/ajaxKeInnerLink/" + document.location.pathname.match(/\d+/)[0], false);
+            xmlhttp.open("GET", "/MediaPages/ajaxKeInnerLink/" + media_ad_id, false);
             xmlhttp.send();
         },
         edit : function() {

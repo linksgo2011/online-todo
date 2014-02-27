@@ -1,5 +1,5 @@
 <div class="block span12">
-    <div class="block-heading" data-toggle="collapse" data-target="#tablewidget">添加网站新闻</div>
+    <div class="block-heading" data-toggle="collapse" data-target="#tablewidget">添加网站公告</div>
     <div class="block-body collapse in">
         <p></p>
         <div>
@@ -23,8 +23,7 @@
         editor = K.create('#NewsContent', {
             resizeType : 0,
             allowPreviewEmoticons : false,
-            uploadJson : '/MediaAdResources/ajaxAdd/MediaAdResourceMediaAdResTypeId:1',
-            allowImageUpload : false,
+            uploadJson : '/tasks/ajaxAdd',
             width: '80%',
             height: '400px',
             items : [

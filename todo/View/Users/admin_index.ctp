@@ -7,7 +7,7 @@
                 <th>EMAIL</th>
                 <th>用户名</th>
                 <th>创建时间</th>
-                <th>最后交易</th>
+                <th>积分</th>
                 <th>qq</th>
                 <th>电话</th>
                 <th>操作</th>
@@ -18,7 +18,7 @@
                     <td><?php echo $one['User']['email']; ?></td>
                     <td><?php echo $one['User']['name']; ?></td>
                     <td><?php echo date('Y-m-d H:i:s',$one['User']['created']); ?></td>
-                    <td><?php echo $one['User']['last_trade']?date('Y-m-d H:i:s',$one['User']['last_trade']):'-'; ?></td>
+                    <td><?php echo $one['User']['point']; ?></td>
                     <td><?php echo $one['User']['qq']; ?></td>
                     <td><?php echo $one['User']['tel']; ?></td>
                     <td>

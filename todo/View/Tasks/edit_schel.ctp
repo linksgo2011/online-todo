@@ -7,11 +7,22 @@ echo $this->Html->script('/js/kindeditor/kindeditor-min.js');?>
     echo $this->Html->css('jquery-ui');
  ?>
 <div class="block span12">
-    <div class="block-heading" data-toggle="collapse" data-target="#tablewidget">请在这里上传每天完成的进度</div>
+    <div class="block-heading" data-toggle="collapse" data-target="#tablewidget">
+        请在这里上传每天完成的进度,你依然能编辑以前的信息。
+        格式为:
+        <pre>
+    2014-2-14
+    ===============================
+    <sub>截图</sub>
+    2014-2-15
+    ===============================
+    <sub>截图</sub>
+        </pre>
+    </div>
     <div class="block-body collapse in">
         <p></p>
             <?php echo $this->BForm->create('Task',array('type'=>'file')); ?>
-            <?php echo $this->Form->input('id',array('label'=>'id:','div'=>false,'type'=>'hidden')); ?>
+            <?php echo $this->Form->input('id',array('div'=>false,'type'=>'hidden')); ?>
             <?php echo $this->BForm->input('schel_detail',array('label'=>'每日截图:')); ?>
             <p>
                 <?php echo $this->BForm->submit('保存',array('class'=>'btn btn-info')); ?>

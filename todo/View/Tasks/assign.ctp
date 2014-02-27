@@ -1,5 +1,12 @@
+<h4>任务佣金</h4>
+<p class="alert tip">任务佣金： <b class="red"><?php echo $task['Task']['price']; ?></b>元 
+<br>
+<br>
+每笔单子会抽取10%的佣金作为工作室的管理费和介绍费
+</p>
+
 <h4>申请任务</h4>
-<p class="alert tip">说明：该需求在5小时内自动判给提交积分越高者，
+<p class="alert tip">说明：该需求一般判给提交积分越高者，
 如未完成任务，则扣除双倍积分。</p>
 <div class="row-fluid">
     <div class="col-md-6">

@@ -15,10 +15,10 @@ echo $this->Html->script('/js/kindeditor/kindeditor-min.js');?>
              ?>
             <?php echo $this->BForm->create('Task',array('type'=>'file')); ?>
             <?php echo $this->BForm->input('title',array('label'=>'任务名称:',)); ?>
+            <?php echo $this->BForm->input('price',array('label'=>'任务佣金:',)); ?>
+            <?php echo $this->BForm->input('period',array('label'=>'任务周期(天数):',)); ?>
             <?php echo $this->BForm->input('detail',array('label'=>'功能简要:')); ?>
             <?php echo $this->BForm->input('doc',array('label'=>'上传详细文档:','type'=>'file')); ?>
-            <?php unset($active_arr['-1']); ?>
-            <?php echo $this->BForm->input('active',array('label'=>'状态:','options'=>$active_arr,'default'=>1)); ?>
             <p>
                 <?php echo $this->BForm->submit('添加',array('class'=>'btn btn-info')); ?>
             </p>

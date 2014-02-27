@@ -27,5 +27,6 @@ padding: 7px 9px;
 <?php echo $this->Form->input('email', array('div'=>false, 'label'=>false, 'class'=>'input-block-level', 'placeholder'=>'注册邮箱'));?>
 <?php echo $this->Form->input('password', array('div'=>false, 'label'=>false, 'type'=>'password', 'class'=>'input-block-level', 'placeholder'=>'密码'));?>
 <?php echo $this->Form->button('登录', array('class'=>'btn btn-large btn-primary', 'type'=>'submit'));?>
-<p></p>
+<hr>    
+<p>QQ 954893376 开通会员</p>
 <?php echo $this->Form->end();?>

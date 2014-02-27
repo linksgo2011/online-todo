@@ -16,9 +16,17 @@ echo $this->Html->script('/js/kindeditor/kindeditor-min.js');?>
             <?php echo $this->BForm->create('Task',array('type'=>'file')); ?>
             <?php echo $this->Form->input('id',array('label'=>'id:','div'=>false,'type'=>'hidden')); ?>
             <?php echo $this->BForm->input('title',array('label'=>'任务名称:',)); ?>
+            <?php echo $this->BForm->input('price',array('label'=>'任务佣金:',)); ?>
+            <?php echo $this->BForm->input('period',array('label'=>'任务周期(天数):',)); ?>
             <?php echo $this->BForm->input('detail',array('label'=>'功能简要:')); ?>
-            <?php echo $this->BForm->input('doc',array('label'=>'上传详细文档:','type'=>'file','after'=>"<p>上传后讲修改原有的文件，点击下载<a href='{$this->request->data['Task']['doc']}'>右键下载</a></p>")); ?>
-            <?php unset($active_arr['-1']); ?>
+            <?php 
+                if ($this->request->data['Task']['doc']) {
+                    $after = "<p>上传后讲修改原有的文件，点击下载<a href='{$this->request->data['Task']['doc']}'>右键下载</a></p>";
+                }
+             ?>
+
+            <?php echo $this->BForm->input('doc',array('label'=>'上传详细文档:','type'=>'file','after'=>$after)); ?>
+            <?php unset($active_arr['-9']); ?>
             <?php echo $this->BForm->input('active',array('label'=>'状态:','options'=>$active_arr,'default'=>1)); ?>
             <p>
                 <?php echo $this->BForm->submit('保存',array('class'=>'btn btn-info')); ?>
@@ -28,23 +36,24 @@ echo $this->Html->script('/js/kindeditor/kindeditor-min.js');?>
 </div>
 <script type="text/javascript">
     KindEditor.ready(function(K) {
-    editor = K.create('textarea', {
-        resizeType : 0,
-        allowPreviewEmoticons : false,
-        uploadJson : '/tasks/ajaxAdd',
-        allowImageUpload : true,
-        width: '100%',
-        height: '500px',
-        items : [
-        'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'strikethrough', 'removeformat', 
-        '|', 
-        'justifyleft', 'justifycenter', 'justifyright',
-        'justifyfull', 'insertorderedlist', 'insertunorderedlist', 
-        '|',
-        'link', 'unlink',
-        '|', 
-        'image', 'table', 'map'
-        ]
+        editor = K.create('#NewsContent', {
+            resizeType : 0,
+            allowPreviewEmoticons : false,
+            uploadJson : '/tasks/ajaxAdd',
+            width: '80%',
+            height: '400px',
+            items : [
+                'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'strikethrough', 'removeformat', 
+                '|', 
+                'justifyleft', 'justifycenter', 'justifyright',
+                'justifyfull', 'insertorderedlist', 'insertunorderedlist', 
+                'lineheight',
+                '|',
+                'link', 'unlink',
+                '|', 
+                'image', 'table', 'media','map','source'
+            ]
+        });
     });
     $('.datetimepicker').datetimepicker({
         timeFormat: "HH:mm:ss",

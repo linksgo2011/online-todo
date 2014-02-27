@@ -21,6 +21,7 @@
                 <th>标题</th>
                 <th>文档</th>
                 <th>创建时间</th>
+                <th>接单人数</th>
                 <th>操作</th>
             </tr>
             <?php if ($data): ?>
@@ -35,6 +36,9 @@
                             <td>没有上传</td>
                         <?php endif ?>
                         <td><?php echo $one['Task']['created'] ?></td>
+                        <td>
+                            <span class="label label-info"><?php echo $one['0']['count']; ?></span>
+                        </td>
                         <td>
                             <?php echo $this->Html->link("查看",array('action'=>'view',$one['Task']['id'],'admin'=>true)); ?>
                             <?php echo $this->Html->link("编辑",array('action'=>'edit',$one['Task']['id'],'admin'=>true)); ?>

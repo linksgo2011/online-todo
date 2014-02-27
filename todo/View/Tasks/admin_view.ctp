@@ -18,6 +18,7 @@
                 <tr>
                     <th>会员</th>
                     <th>时间</th>
+                    <th>竞标积分</th>
                     <th>操作</th>
                 </tr>
                 <?php if ($task_assign_users): ?>
@@ -25,9 +26,12 @@
                     <tr>
                         <td><?php echo $one['User']['name']; ?></td>
                         <td><?php echo $one['TaskAssign']['created']; ?></td>
+                        <td><?php echo $one['TaskAssign']['point']; ?></td>
                         <td>
                             <?php if ($task['Task']['active'] == 1): ?>
                                 <a href="<?php echo $this->Html->Url(array('admin'=>true,"action"=>"take_assign",$task['Task']['id'],$one['User']['id'])); ?>">采纳</a>
+                                <?php else: ?>
+                                -
                             <?php endif ?>  
                         </td>
                     </tr>
@@ -39,7 +43,13 @@
             <table class="table">
                 <tr>
                     <th>任务获得者</th>
-                    <td><?php echo $task['Worker']['name']; ?></td>
+                    <td style="color:red">
+                        <?php if ($task['Worker']['name']): ?>
+                            <?php echo $task['Worker']['name']; ?>
+                        <?php else: ?>
+                            -
+                        <?php endif ?>
+                    </td>
                 </tr>
                 <tr>
                     <th>任务进度报告</th>
