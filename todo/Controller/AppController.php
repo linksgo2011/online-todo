@@ -32,8 +32,6 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-    //...
-
     public $components = array(
         'Session','UserAuth',
     );
@@ -48,6 +46,11 @@ class AppController extends Controller {
                 'value' => 'https'
             ));
         }
+        $user = $this->UserAuth->getUser();
+        if ($this->request->params['prefix'] == "admin" && $user['User']['role'] != "admin") {
+            $this->warning("没有权限进入!!");
+            $this->redirect($this->referer());
+        }
     }
 
     public function succ( $message ) {
@@ -59,7 +62,7 @@ class AppController extends Controller {
     }
 
     public function warning( $message ) {
-        $this->Session->setFlash( $message, 'default', array( 'class' => 'alert alert-block' ) );
+        $this->Session->setFlash( $message, 'default', array( 'class' => 'alert alert-warning' ) );
     }
 
     /**
@@ -71,7 +74,7 @@ class AppController extends Controller {
         }
         $prefix = $this->params['prefix'];
 
-        if ( !isset( $user['User']['usr_id'] ) ) { // 没有登录
+        if ( !isset( $user['User']['id'] ) ) { // 没有登录
             $this->Session->write( UserAuthComponent::originAfterLogin, $this->request->here );
             $url = array( 'controller' => 'users', 'action' => 'login' );
             if ( $prefix ) {
@@ -80,5 +83,27 @@ class AppController extends Controller {
             $this->redirect( $url );
         }
 
+    }
+
+    public function emailTo($body="")
+    {
+        $this->Email = $this->Components->load("Email");
+        $this->Email->smtpOptions = array(
+            'transport' => 'Smtp',
+            'from' => array('linksgo2011@163.com' => '接单系统邮件'),
+            'host' => 'smtp.163.com',
+            'port' => 25,
+            'timeout' => 30,
+            'username' => 'linksgo2011@163.com',
+            'password' => 'a19901206',
+            'client' => null,
+            'log' => false
+        );
+
+        $this->Email->delivery = 'smtp';
+        $this->Email->from = "linksgo2011@163.com";
+        $this->Email->to = "120377843@qq.com";
+        $this->Email->subject = "接单系统邮件";
+        $this->Email->send($body);
     }
 }

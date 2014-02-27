@@ -11,7 +11,7 @@ class News extends AppModel {
  *
  * @var string
  */
-    public $displayField = 'title';
+	public $displayField = 'title';
 
     public $active_arr = array('-1'=>'不发布','0'=>'发布');
 }
