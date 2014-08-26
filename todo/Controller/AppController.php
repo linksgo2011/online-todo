@@ -47,6 +47,7 @@ class AppController extends Controller {
             ));
         }
         $user = $this->UserAuth->getUser();
+
         if ($this->request->params['prefix'] == "admin" && $user['User']['role'] != "admin") {
             $this->warning("没有权限进入!!");
             $this->redirect($this->referer());

@@ -1,52 +1,6 @@
 <style type="text/css">
     img{max-width:100%;}
 </style>
-<div class="jumbotron">
-    <table class="table">
-        <tr>
-            <th>任务名称</th>
-            <th>功能简要</th>
-            <th>开发周期</th>
-            <th>下载详细文档 </th>
-            <th>状态</th>
-            <th>操作</th>
-        </tr>
-        <?php if ($data): ?>
-            <?php foreach ($data as $key => $one): ?>
-                <tr>
-                    <td><?php echo $one['Task']['title']; ?></td>
-                    <td >
-                        <a href="#" class="show_more"><?php echo mb_strcut(strip_tags($one['Task']['detail']), 0,22,'utf-8'); ?></a>
-                        <div class="view-data hide">
-                            <?php echo $one['Task']['detail']; ?>
-                        </div>
-                    </td>
-                    <td><?php echo $one['Task']['period']; ?>(天)</td>
-                    <?php if ($one['Task']['doc']): ?>
-                        <?php if ($one['Task']['active']==2): ?>
-                            <td>无权查看</td>
-                        <?php else: ?>
-                            <td><a href="<?php echo $one['Task']['doc']; ?>">右键保存</a></td>
-                        <?php endif ?>
-                        <?php else: ?>
-                        <td>未上传</td>
-                    <?php endif ?>
-                    <td><?php echo $active_arr[$one['Task']['active']] ?></td>
-                    <td>
-                        <?php if ($one['Task']['active'] == 1): ?>
-                            <a href="/Tasks/assign/<?php echo $one['Task']['id']; ?>">接单</a>
-                            <?php else: ?>
-                            <span>接单</span>
-                        <?php endif ?>
-                    </td>
-                </tr>
-            <?php endforeach ?>
-        <?php endif ?>
-        <tr></tr>
-    </table>
-    <?php echo $this->element('Pages'); ?>
-</div>
-<hr>
 <div class="row-fluid marketing">
     <div class="span6">
         <h4>公告</h4>
@@ -62,6 +16,48 @@
         </ul>
     </div>
 </div>
+<hr>
+<div class="jumbotron">
+    <table class="table">
+        <tr>
+            <th>任务名称</th>
+            <th>功能简要</th>
+            <th>发布时间</th>
+            <th>客户联系方式</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+        <?php if ($data): ?>
+            <?php foreach ($data as $key => $one): ?>
+                <tr>
+                    <td><?php echo $one['Task']['title']; ?></td>
+                    <td >
+                        <a href="#" class="show_more"><?php echo mb_strcut(strip_tags($one['Task']['detail']), 0,22,'utf-8'); ?></a>
+                        <div class="view-data hide">
+                            <?php echo $one['Task']['detail']; ?>
+                        </div>
+                    </td>
+                    <td><?php echo $one['Task']['created']; ?></td>
+                    <td>
+                        <a class="remote_modal" href="/Tasks/view_info/<?php echo $one['Task']['id']; ?>"  point="<?php echo $one['Task']['point']; ?>">点击查看</a>
+                    </td>
+                    <td><?php echo $active_arr[$one['Task']['active']] ?></td>
+                    <td>
+                        <?php if ($one['Task']['active'] == 1): ?>
+                            <a href="/Tasks/assign/<?php echo $one['Task']['id']; ?>">接单</a>
+                            <?php else: ?>
+                            <span>接单</span>
+                        <?php endif ?>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+        <?php endif ?>
+        <tr></tr>
+    </table>
+    <?php echo $this->element('Pages'); ?>
+</div>
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -88,4 +84,14 @@
     // $(".btn-lg").click(function(){
     //     $('#myModal').modal();
     // })
+
+    $(".remote_modal").click(function() {
+        var point = $(this).attr("point");
+        var href = $(this).attr("href");
+        if (confirm("扣除"+point+"个积分,是否确定查看?")) {
+            $('#myModal .modal-body').load(href);
+            $('#myModal').modal();
+        }
+        return false;
+    })
 </script>

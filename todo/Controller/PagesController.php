@@ -59,7 +59,7 @@ class PagesController extends AppController {
 		$this->paginate = array(
 			'conditions'=>array('News.active>=0'),
 			'order'=>'id desc',
-            'limit'=>20
+            'limit'=>3
 		);
         $this->set('data',$data);
 		$this->set('news', $this->News->find('all',$this->paginate));

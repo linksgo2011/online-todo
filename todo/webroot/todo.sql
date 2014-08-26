@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50524
+Source Server Version : 50520
 Source Host           : localhost:3306
 Source Database       : todo
 
 Target Server Type    : MYSQL
-Target Server Version : 50524
+Target Server Version : 50520
 File Encoding         : 65001
 
-Date: 2014-02-20 00:05:19
+Date: 2014-08-23 23:05:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -50,7 +50,7 @@ CREATE TABLE `logs` (
   `task_id` int(11) NOT NULL,
   `created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8 COMMENT='任务日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8 COMMENT='任务日志表';
 
 -- ----------------------------
 -- Records of logs
@@ -157,6 +157,7 @@ INSERT INTO `logs` VALUES ('99', '更新任务', '194', '16', '2013-07-09 00:20:
 INSERT INTO `logs` VALUES ('100', '0', '194', '16', '2013-07-09 00:24:30');
 INSERT INTO `logs` VALUES ('101', '更新任务', '194', '16', '2013-07-09 00:25:23');
 INSERT INTO `logs` VALUES ('102', '拒绝任务,理由为:测试一下，拒绝的任务、', '194', '16', '2013-07-09 00:25:55');
+INSERT INTO `logs` VALUES ('103', '创建任务', '2', '17', '2014-08-23 21:47:17');
 
 -- ----------------------------
 -- Table structure for `news`
@@ -419,19 +420,25 @@ CREATE TABLE `tasks` (
   `active` tinyint(2) NOT NULL DEFAULT '1',
   `detail` text NOT NULL,
   `reject` varchar(250) NOT NULL DEFAULT '',
+  `worker_id` int(11) NOT NULL DEFAULT '0',
+  `wangwang` varchar(11) NOT NULL DEFAULT '0',
+  `tel` varchar(11) NOT NULL DEFAULT '0',
+  `qq` varchar(11) NOT NULL DEFAULT '0',
+  `point` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='任务表';
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='任务表';
 
 -- ----------------------------
 -- Records of tasks
 -- ----------------------------
-INSERT INTO `tasks` VALUES ('3', '194', '2', 'media', '3', '4', '测试编辑任务', '2013-07-01 18:25:46', '2013-07-01 18:31:01', '2013-07-24 00:00:00', '0000-00-00 00:00:00', '0', '-1', '测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务', '');
-INSERT INTO `tasks` VALUES ('4', '194', '1', 'media', '4', '5', '测试任务1', '2013-07-02 10:03:11', '2013-07-02 10:08:26', '2013-07-01 16:00:29', '0000-00-00 00:00:00', '12', '-1', '<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>', '');
-INSERT INTO `tasks` VALUES ('5', '194', '1', 'media', '1', '1', '测试任务3', '2013-07-08 22:39:54', '2013-07-08 22:45:32', '2013-07-01 16:07:59', '0000-00-00 00:00:00', '0', '-1', '测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3', '');
-INSERT INTO `tasks` VALUES ('11', '0', '2', 'media', '3', '4', '测试任务', '2013-07-01 17:53:42', '2013-07-01 17:53:42', '2013-07-24 00:00:00', '0000-00-00 00:00:00', '0', '5', '测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务', '');
-INSERT INTO `tasks` VALUES ('14', '194', '4', 'media', '4', '5', '测试任务营销工作', '2013-07-08 23:49:12', '2013-07-08 23:54:50', '2013-07-26 08:00:00', '2013-07-08 23:07:07', '0', '4', '<img src=\"http://oss.63810.com/mogilefs/todo/res/20130701222644_29656.jpg\" alt=\"\" />', '');
-INSERT INTO `tasks` VALUES ('15', '167', '3', 'media', '4', '1', '测试', '2013-07-02 09:48:14', '2013-07-02 09:53:28', '2013-07-27 00:00:00', '0000-00-00 00:00:00', '1', '6', '测试系统', '');
-INSERT INTO `tasks` VALUES ('16', '189', '1', 'media', '1', '1', 'BUG 1111', '2013-07-09 00:19:45', '2013-07-09 00:25:23', '2013-07-31 14:06:58', '0000-00-00 00:00:00', '0', '5', 'ADASD', '测试一下，拒绝的任务、、');
+INSERT INTO `tasks` VALUES ('3', '194', '2', 'media', '3', '4', '测试编辑任务', '2013-07-01 18:25:46', '2013-07-01 18:31:01', '2013-07-24 00:00:00', '0000-00-00 00:00:00', '0', '-1', '测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务', '', '0', '0', '0', '0', '0');
+INSERT INTO `tasks` VALUES ('4', '194', '1', 'media', '4', '5', '测试任务1', '2013-07-02 10:03:11', '2013-07-02 10:08:26', '2013-07-01 16:00:29', '0000-00-00 00:00:00', '12', '-1', '<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试<span>测试</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>', '', '0', '0', '0', '0', '0');
+INSERT INTO `tasks` VALUES ('5', '194', '1', 'media', '1', '1', '测试任务3', '2013-07-08 22:39:54', '2013-07-08 22:45:32', '2013-07-01 16:07:59', '0000-00-00 00:00:00', '0', '-1', '测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3测试任务3', '', '0', '0', '0', '0', '0');
+INSERT INTO `tasks` VALUES ('11', '0', '2', 'media', '3', '4', '测试任务', '2013-07-01 17:53:42', '2013-07-01 17:53:42', '2013-07-24 00:00:00', '0000-00-00 00:00:00', '0', '5', '测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务测试任务', '', '0', '0', '0', '0', '0');
+INSERT INTO `tasks` VALUES ('14', '194', '4', 'media', '4', '5', '测试任务营销工作', '2013-07-08 23:49:12', '2013-07-08 23:54:50', '2013-07-26 08:00:00', '2013-07-08 23:07:07', '0', '4', '<img src=\"http://oss.63810.com/mogilefs/todo/res/20130701222644_29656.jpg\" alt=\"\" />', '', '0', '0', '0', '0', '0');
+INSERT INTO `tasks` VALUES ('15', '167', '3', 'media', '4', '1', '测试', '2013-07-02 09:48:14', '2013-07-02 09:53:28', '2013-07-27 00:00:00', '0000-00-00 00:00:00', '1', '6', '测试系统', '', '0', '0', '0', '0', '0');
+INSERT INTO `tasks` VALUES ('16', '189', '1', 'media', '1', '1', 'BUG 1111', '2013-07-09 00:19:45', '2013-07-09 00:25:23', '2013-07-31 14:06:58', '0000-00-00 00:00:00', '0', '5', 'ADASD', '测试一下，拒绝的任务、、', '0', '0', '0', '0', '0');
+INSERT INTO `tasks` VALUES ('17', '0', '0', 'media', '0', '0', '12', '2014-08-23 22:13:05', '2014-08-23 22:13:05', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0', '1', 'http://todo.com/', '', '0', '121231', '13668193903', '123123', '10');
 
 -- ----------------------------
 -- Table structure for `task_assigns`
@@ -476,27 +483,29 @@ CREATE TABLE `users` (
   `name` varchar(255) NOT NULL DEFAULT '',
   `password` varchar(255) NOT NULL DEFAULT '',
   `pay_password` varchar(255) NOT NULL,
-  `role` set('user','meigong','kefu','caiwu','charger','admin') NOT NULL DEFAULT 'admin',
+  `role` set('user','meigong','kefu','caiwu','charger','admin') NOT NULL DEFAULT 'user',
   `created` int(11) NOT NULL DEFAULT '0',
   `last_login` int(11) NOT NULL DEFAULT '0',
   `last_trade` int(11) NOT NULL DEFAULT '0',
-  `qq` int(11) DEFAULT '0',
+  `qq` int(11) NOT NULL DEFAULT '0',
   `tel` varchar(255) NOT NULL DEFAULT '',
   `active` tinyint(4) NOT NULL DEFAULT '0' COMMENT '用户状态 0 为正常',
-  `point` int(11) DEFAULT '0',
+  `point` int(11) NOT NULL DEFAULT '0',
   `alipay` varchar(255) DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES ('1', '120377843@qq.com', 'linksgo2011', 'a19901206mm', '123456', 'admin', '1384681937', '1384681937', '0', '120377843', '13668193903', '0', '0', '0');
-INSERT INTO `users` VALUES ('2', 'test@qq.com', 'test@qq.com', '123456', '123456', 'admin', '1386428837', '1386428837', '0', '1203', '', '0', '1386862336', '0');
-INSERT INTO `users` VALUES ('3', 'test2@qq.com', 'test2@qq.com', '123456', '123456', 'user', '1386429404', '1386429404', '0', null, '', '0', '0', '0');
-INSERT INTO `users` VALUES ('4', 'test3@qq.com', 'test3@qq.com', 'test3@qq.com', 'test3@qq.com', 'kefu', '1386429490', '1386429490', '0', null, '', '0', '0', '0');
-INSERT INTO `users` VALUES ('5', 'test5@qq.com', 'test5@qq.com', 'test5@qq.com', 'test5@qq.com', 'user', '1386505695', '1386505695', '0', null, 'test5@qq.com', '-1', '0', '0');
+INSERT INTO `users` VALUES ('2', 'test@qq.com', 'test@qq.com', '123456', '123456', 'admin', '1386428837', '1386428837', '0', '1203', '', '0', '1386862256', '0');
+INSERT INTO `users` VALUES ('3', 'test2@qq.com', 'test2@qq.com', '123456', '123456', 'user', '1386429404', '1386429404', '0', '0', '', '0', '0', '0');
+INSERT INTO `users` VALUES ('4', 'test3@qq.com', 'test3@qq.com', 'test3@qq.com', 'test3@qq.com', 'kefu', '1386429490', '1386429490', '0', '0', '', '0', '0', '0');
+INSERT INTO `users` VALUES ('5', 'test5@qq.com', 'test5@qq.com', 'test5@qq.com', 'test5@qq.com', 'user', '1386505695', '1386505695', '0', '0', 'test5@qq.com', '-1', '0', '0');
 INSERT INTO `users` VALUES ('6', 'test6@qq.com', 'test6@qq.com', '123456', '123456', 'user', '1386605437', '1386605437', '0', '120377843', '13668193903', '0', '0', '0');
 INSERT INTO `users` VALUES ('7', 'test2011@qq.com', 'test2011@qq.com', '1234567', '123456', 'user', '1386863005', '1386863005', '0', '1203777078', '', '0', '1386863080', '0');
-INSERT INTO `users` VALUES ('8', 'test2012@qq.com', 'test2012@qq.com', '123456', '1234567', 'user', '1386863111', '1386863111', '0', null, '', '0', '0', '');
+INSERT INTO `users` VALUES ('8', 'test2012@qq.com', 'test2012@qq.com', '123456', '1234567', 'user', '1386863111', '1386863111', '0', '0', '', '0', '0', '');
+INSERT INTO `users` VALUES ('9', 'test1212@qq.com', '123456', '123456', '', 'admin', '1408801893', '0', '0', '123456', '123456', '0', '123456', '123456');
+INSERT INTO `users` VALUES ('10', 'test12122@qq.com', 'test12122@qq.com', '123456', '', 'user', '1408801983', '0', '0', '123141', '13123', '0', '123', '1234561');

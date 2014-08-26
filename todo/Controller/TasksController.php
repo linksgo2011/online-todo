@@ -303,6 +303,29 @@ class TasksController extends AppController {
 	}
 
     /**
+     *查看客户信息
+     */
+    public function view_info($task_id){
+        $this->layout = "ajax";
+        $user_id = $this->UserAuth->getUserId();
+        $user = $this->User->read(null,$user_id);
+        $task = $this->Task->findById($task_id);
+        if (!$task) {
+            throw new NotFoundException("404", 1);
+        }
+
+        $point = $task['Task']['point'];
+
+        if ($user['User']['point'] < $point) {
+            echo "积分不足！";
+            exit();
+        }
+        $this->User->updateAll(array('point'=>"point - {$point}"),array('id'=>$user_id));
+        $this->UserAuth->flashUser($user_id);
+        $this->set(compact('task'));
+    }
+
+    /**
      * 编辑进度
      */
     public function edit_schel($id=null)

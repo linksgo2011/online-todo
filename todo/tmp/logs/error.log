@@ -1481,3 +1481,103 @@
 #3 C:\wamp\www\todo\trunk\lib\Cake\Routing\Dispatcher.php(161): Dispatcher->_invoke(Object(TasksController), Object(CakeRequest), Object(CakeResponse))
 #4 C:\wamp\www\todo\trunk\todo\webroot\index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #5 {main}
+2014-08-23 21:35:57 Error: 
+HTTP_HOST  http://todo.com/
+HTTP_REFERER= 
+HTTP_USER_AGENT= Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36
+SCRIPT_FILENAME= E:/www/todo/trunk/todo/webroot/index.phparray (
+)array (
+)
+2014-08-23 21:35:57 Error: [MissingConnectionException] Database connection "SQLSTATE[HY000] [2002] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+" is missing, or could not be created.
+#0 E:\www\todo\trunk\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 E:\www\todo\trunk\lib\Cake\Model\ConnectionManager.php(101): DboSource->__construct(Array)
+#2 E:\www\todo\trunk\lib\Cake\Model\Model.php(3157): ConnectionManager::getDataSource('master')
+#3 E:\www\todo\trunk\lib\Cake\Model\Model.php(1092): Model->setDataSource('master')
+#4 E:\www\todo\trunk\lib\Cake\Model\Model.php(3179): Model->setSource('tasks')
+#5 E:\www\todo\trunk\lib\Cake\Model\Model.php(2630): Model->getDataSource()
+#6 E:\www\todo\trunk\todo\Model\AppModel.php(68): Model->find('all', Array)
+#7 E:\www\todo\trunk\todo\Model\AppModel.php(102): AppModel->findFromSlave('all', Array)
+#8 E:\www\todo\trunk\lib\Cake\Controller\Component\PaginatorComponent.php(174): AppModel->find('all', Array)
+#9 E:\www\todo\trunk\lib\Cake\Controller\Controller.php(1082): PaginatorComponent->paginate('Task', Array, Array)
+#10 E:\www\todo\trunk\todo\Controller\PagesController.php(57): Controller->paginate('Task')
+#11 [internal function]: PagesController->display()
+#12 E:\www\todo\trunk\lib\Cake\Controller\Controller.php(485): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#13 E:\www\todo\trunk\lib\Cake\Routing\Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#14 E:\www\todo\trunk\lib\Cake\Routing\Dispatcher.php(161): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest), Object(CakeResponse))
+#15 E:\www\todo\trunk\todo\webroot\index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2014-08-23 21:42:44 Error: 
+HTTP_HOST  http://todo.com/
+HTTP_REFERER= 
+HTTP_USER_AGENT= Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36
+SCRIPT_FILENAME= E:/www/todo/trunk/todo/webroot/index.phparray (
+)array (
+)
+2014-08-23 21:42:44 Error: [MissingConnectionException] Database connection "SQLSTATE[HY000] [2002] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+" is missing, or could not be created.
+#0 E:\www\todo\trunk\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 E:\www\todo\trunk\lib\Cake\Model\ConnectionManager.php(101): DboSource->__construct(Array)
+#2 E:\www\todo\trunk\lib\Cake\Model\Model.php(3157): ConnectionManager::getDataSource('master')
+#3 E:\www\todo\trunk\lib\Cake\Model\Model.php(1092): Model->setDataSource('master')
+#4 E:\www\todo\trunk\lib\Cake\Model\Model.php(3179): Model->setSource('tasks')
+#5 E:\www\todo\trunk\lib\Cake\Model\Model.php(2630): Model->getDataSource()
+#6 E:\www\todo\trunk\todo\Model\AppModel.php(68): Model->find('all', Array)
+#7 E:\www\todo\trunk\todo\Model\AppModel.php(102): AppModel->findFromSlave('all', Array)
+#8 E:\www\todo\trunk\lib\Cake\Controller\Component\PaginatorComponent.php(174): AppModel->find('all', Array)
+#9 E:\www\todo\trunk\lib\Cake\Controller\Controller.php(1082): PaginatorComponent->paginate('Task', Array, Array)
+#10 E:\www\todo\trunk\todo\Controller\PagesController.php(57): Controller->paginate('Task')
+#11 [internal function]: PagesController->display()
+#12 E:\www\todo\trunk\lib\Cake\Controller\Controller.php(485): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#13 E:\www\todo\trunk\lib\Cake\Routing\Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#14 E:\www\todo\trunk\lib\Cake\Routing\Dispatcher.php(161): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest), Object(CakeResponse))
+#15 E:\www\todo\trunk\todo\webroot\index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#16 {main}
+2014-08-23 21:44:01 Error: 
+HTTP_HOST  http://todo.com/Tasks/index
+HTTP_REFERER= http://todo.com/users/login
+HTTP_USER_AGENT= Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36
+SCRIPT_FILENAME= E:/www/todo/trunk/todo/webroot/index.phparray (
+)array (
+)
+2014-08-23 21:44:01 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Task.worker_id' in 'where clause'
+#0 E:\www\todo\trunk\lib\Cake\Model\Datasource\DboSource.php(461): PDOStatement->execute(Array)
+#1 E:\www\todo\trunk\lib\Cake\Model\Datasource\DboSource.php(427): DboSource->_execute('SELECT Task.*,T...', Array)
+#2 E:\www\todo\trunk\lib\Cake\Model\Datasource\DboSource.php(671): DboSource->execute('SELECT Task.*,T...', Array, Array)
+#3 E:\www\todo\trunk\lib\Cake\Model\Datasource\DboSource.php(1082): DboSource->fetchAll('SELECT Task.*,T...', false)
+#4 E:\www\todo\trunk\lib\Cake\Model\Model.php(2630): DboSource->read(Object(Task), Array)
+#5 E:\www\todo\trunk\todo\Model\AppModel.php(68): Model->find('all', Array)
+#6 E:\www\todo\trunk\todo\Model\AppModel.php(102): AppModel->findFromSlave('all', Array)
+#7 E:\www\todo\trunk\lib\Cake\Controller\Component\PaginatorComponent.php(174): AppModel->find('all', Array)
+#8 E:\www\todo\trunk\lib\Cake\Controller\Controller.php(1082): PaginatorComponent->paginate(NULL, Array, Array)
+#9 E:\www\todo\trunk\todo\Controller\TasksController.php(36): Controller->paginate()
+#10 [internal function]: TasksController->index()
+#11 E:\www\todo\trunk\lib\Cake\Controller\Controller.php(485): ReflectionMethod->invokeArgs(Object(TasksController), Array)
+#12 E:\www\todo\trunk\lib\Cake\Routing\Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#13 E:\www\todo\trunk\lib\Cake\Routing\Dispatcher.php(161): Dispatcher->_invoke(Object(TasksController), Object(CakeRequest), Object(CakeResponse))
+#14 E:\www\todo\trunk\todo\webroot\index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 {main}
+2014-08-23 21:44:34 Error: 
+HTTP_HOST  http://todo.com/Tasks/index
+HTTP_REFERER= http://todo.com/users/login
+HTTP_USER_AGENT= Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36
+SCRIPT_FILENAME= E:/www/todo/trunk/todo/webroot/index.phparray (
+)array (
+)
+2014-08-23 21:44:34 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Task.worker_id' in 'where clause'
+#0 E:\www\todo\trunk\lib\Cake\Model\Datasource\DboSource.php(461): PDOStatement->execute(Array)
+#1 E:\www\todo\trunk\lib\Cake\Model\Datasource\DboSource.php(427): DboSource->_execute('SELECT Task.*,T...', Array)
+#2 E:\www\todo\trunk\lib\Cake\Model\Datasource\DboSource.php(671): DboSource->execute('SELECT Task.*,T...', Array, Array)
+#3 E:\www\todo\trunk\lib\Cake\Model\Datasource\DboSource.php(1082): DboSource->fetchAll('SELECT Task.*,T...', false)
+#4 E:\www\todo\trunk\lib\Cake\Model\Model.php(2630): DboSource->read(Object(Task), Array)
+#5 E:\www\todo\trunk\todo\Model\AppModel.php(68): Model->find('all', Array)
+#6 E:\www\todo\trunk\todo\Model\AppModel.php(102): AppModel->findFromSlave('all', Array)
+#7 E:\www\todo\trunk\lib\Cake\Controller\Component\PaginatorComponent.php(174): AppModel->find('all', Array)
+#8 E:\www\todo\trunk\lib\Cake\Controller\Controller.php(1082): PaginatorComponent->paginate(NULL, Array, Array)
+#9 E:\www\todo\trunk\todo\Controller\TasksController.php(36): Controller->paginate()
+#10 [internal function]: TasksController->index()
+#11 E:\www\todo\trunk\lib\Cake\Controller\Controller.php(485): ReflectionMethod->invokeArgs(Object(TasksController), Array)
+#12 E:\www\todo\trunk\lib\Cake\Routing\Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#13 E:\www\todo\trunk\lib\Cake\Routing\Dispatcher.php(161): Dispatcher->_invoke(Object(TasksController), Object(CakeRequest), Object(CakeResponse))
+#14 E:\www\todo\trunk\todo\webroot\index.php(110): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 {main}

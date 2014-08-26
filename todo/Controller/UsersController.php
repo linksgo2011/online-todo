@@ -91,6 +91,7 @@ class UsersController extends AppController {
  */
     public function admin_add() {
         if ($this->request->is('post')) {
+            $this->request->data['User']['role'] = "user";
             if ($this->User->save($this->request->data)) {
                 $this->succ("添加成功");
                 $this->redirect(array('action'=>'index'));

@@ -4,7 +4,7 @@
             <tr>
                 <th>任务名称</th>
                 <th>功能简要</th>
-                <th>开发周期</th>
+                <th>发布时间</th>
                 <th>下载详细文档 </th>
                 <th>每日进度截图</th>
                 <th>任务创建时间</th>
@@ -17,7 +17,7 @@
                     <tr >
                         <td><?php echo $one['Task']['title']; ?></td>
                         <td><?php echo mb_strcut(strip_tags($one['Task']['detail']), 0,22,'utf-8'); ?></td>
-                        <td><?php echo $one['Task']['period']; ?>(天)</td>
+                        <td><?php echo $one['Task']['created']; ?>(天)</td>
                         <?php if ($one['Task']['doc']): ?>
                             <td><a href="<?php echo $one['Task']['doc']; ?>">右键保存</a></td>
                             <?php else: ?>

@@ -17,6 +17,12 @@ echo $this->Html->script('/js/kindeditor/kindeditor-min.js');?>
             <?php echo $this->Form->input('id',array('label'=>'id:','div'=>false,'type'=>'hidden')); ?>
             <?php echo $this->BForm->input('title',array('label'=>'任务名称:',)); ?>
             <?php echo $this->BForm->input('price',array('label'=>'任务佣金:',)); ?>
+
+            <?php echo $this->BForm->input('point',array('label'=>'查看积分:',)); ?>
+            <?php echo $this->BForm->input('wangwang',array('label'=>'旺旺:',)); ?>
+            <?php echo $this->BForm->input('qq',array('label'=>'QQ:',)); ?>
+            <?php echo $this->BForm->input('tel',array('label'=>'电话:',)); ?>
+
             <?php echo $this->BForm->input('period',array('label'=>'任务周期(天数):',)); ?>
             <?php echo $this->BForm->input('detail',array('label'=>'功能简要:')); ?>
             <?php 
